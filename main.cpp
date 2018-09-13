@@ -10,19 +10,19 @@ struct Student
   float gpa;
 };
 
-void printStudents(const std::vector<Student>* students)
+void printStudents(std::vector<Student>* students)
 {
-  Student* arr[students.size()] = students;
-  for(int i = 0; i < sizeof(arr); i++)
-  {
-    std::cout << arr[i].fName << std::endl;
-  }
+  
+  std::vector<Student>::iterator it;
+  for(it = students.begin(); it != students.end(); ++it)
+    std::cout << "Name: " << (*it).fName << " " << (*it).lName << ", ID: " << (*it).id << ", GPA" << (*it).gpa << std::endl;
 }
 
 void createStudent(std::vector<Student>* students)
 {
   (*students).push_back(Student());
-  std::cout << "Enter the student's first name:";
+
+  std::cout << "Enter the student's first name: ";
   std::cin >>  (*students)[(*students).size()].fName;
 
   std::cin.clear();
@@ -52,14 +52,14 @@ int main()
 
   bool running = true;
 
-  char command[5];
+  char command[6];
 
   std::vector<Student>* students = new std::vector<Student>;
 
   while(running)
   {
     std::cout << "Enter a command(ADD, PRINT, DELETE, QUIT): ";
-    std::cin.get(command, 5);
+    std::cin.get(command, 6);
     std::cin.clear();
     std::cin.ignore(100, '\n');
 
