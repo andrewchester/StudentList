@@ -20,32 +20,33 @@ void printStudents(std::vector<Student>* students)
 
 void createStudent(std::vector<Student>* students)
 {
-  (*students).push_back(Student());
-  int size = (*students).size();
+  Student testStudent;
 
   std::cout << "Enter the student's first name: ";
-  std::cin.get((*students)[size].fName, 20);
+  std::cin.get(testStudent.fName, 20);
 
   std::cin.clear();
   std::cin.ignore(100, '\n');
 
   std::cout << "Enter the student's last name: ";
-  std::cin.get((*students)[size].lName, 20);
+  std::cin.get(testStudent.lName, 20);
 
   std::cin.clear();
   std::cin.ignore(100, '\n');
 
   std::cout << "Enter the student's ID: ";
-  std::cin >> (*students)[size].id;
+  std::cin >> testStudent.id;
 
   std::cin.clear();
   std::cin.ignore(100, '\n');
 
   std::cout << "Enter the student's GPA: ";
-  std::cin >> (*students)[size].gpa;
+  std::cin >> testStudent.gpa;
   
   std::cin.clear();
   std::cin.ignore(100, '\n');
+
+  (*students).push_back(testStudent);
 }
 
 int main()
