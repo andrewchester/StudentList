@@ -14,35 +14,36 @@ void printStudents(std::vector<Student>* students)
 {
   
   std::vector<Student>::iterator it;
-  for(it = students.begin(); it != students.end(); ++it)
-    std::cout << "Name: " << (*it).fName << " " << (*it).lName << ", ID: " << (*it).id << ", GPA" << (*it).gpa << std::endl;
+  for(it = (*students).begin(); it != (*students).end(); ++it)
+    std::cout << "Name: " << (*it).fName << " " << (*it).lName << ", ID: " << (*it).id << ", GPA: " << (*it).gpa << std::endl;
 }
 
 void createStudent(std::vector<Student>* students)
 {
   (*students).push_back(Student());
+  int size = (*students).size();
 
   std::cout << "Enter the student's first name: ";
-  std::cin >>  (*students)[(*students).size()].fName;
+  std::cin.get((*students)[size].fName, 20);
 
   std::cin.clear();
   std::cin.ignore(100, '\n');
 
   std::cout << "Enter the student's last name: ";
-  std::cin >> (*students)[(*students).size()].lName;
+  std::cin.get((*students)[size].lName, 20);
 
   std::cin.clear();
   std::cin.ignore(100, '\n');
 
   std::cout << "Enter the student's ID: ";
-  std::cin >> (*students)[(*students).size()].id;
+  std::cin >> (*students)[size].id;
 
   std::cin.clear();
   std::cin.ignore(100, '\n');
 
   std::cout << "Enter the student's GPA: ";
-  std::cin >> (*students)[(*students).size()].gpa;
-
+  std::cin >> (*students)[size].gpa;
+  
   std::cin.clear();
   std::cin.ignore(100, '\n');
 }
@@ -54,8 +55,8 @@ int main()
 
   char command[6];
 
-  std::vector<Student>* students = new std::vector<Student>;
-
+  std::vector<Student>* students = new std::vector<Student>(0);
+  
   while(running)
   {
     std::cout << "Enter a command(ADD, PRINT, DELETE, QUIT): ";
@@ -81,7 +82,7 @@ int main()
     }
     else if(strncmp(command, "PRINT", 5) == 0)
     {
-      printStudents(*students);
+      printStudents(students);
     }
   }
 
