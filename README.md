@@ -1,3 +1,3 @@
 # StudentList
 
-A program for managing students
+A program for managing a list of students
